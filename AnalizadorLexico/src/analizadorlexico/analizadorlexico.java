@@ -187,6 +187,8 @@ public class analizadorlexico extends javax.swing.JFrame {
             //String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
             //C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico
             String ruta = "C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
+            String ruta2 = "C:/Users/Pablo García/Documents/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
+            String ruta3 = "C:/Users/axelg/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
             String contenido = txtAnalizarLex.getText();
             File file = new File(ruta);
             // Si el archivo no existe es creado
