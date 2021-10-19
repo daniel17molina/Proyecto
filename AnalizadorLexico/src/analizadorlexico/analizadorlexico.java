@@ -10,6 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java_cup.runtime.Symbol;
 import javax.swing.JFileChooser;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 
 public class analizadorlexico extends javax.swing.JFrame {
 
@@ -32,12 +35,13 @@ public class analizadorlexico extends javax.swing.JFrame {
     }
 
     private void analizarLexico() throws IOException {
-           int cont = 1;
+        int cont = 1;
 
         String expr = (String) txtResultado.getText();
-      Lexer lexer = new Lexer(new StringReader(expr));
+        Lexer lexer = new Lexer(new StringReader(expr));
+        
         String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
-       while (true) {
+        while (true) {
             Tokens token = lexer.yylex();
             if (token == null) {
                 txtAnalizarLex.setText(resultado);
@@ -72,10 +76,10 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case For:
                     resultado += "  <Reservada while>\t" + lexer.lexeme + "\n";
                     break;
-                    case Entrada:
+                case Entrada:
                     resultado += "  <Reservada Entrada>\t" + lexer.lexeme + "\n";
                     break;
-                    case Salida:
+                case Salida:
                     resultado += "  <Reservada Salida>\t" + lexer.lexeme + "\n";
                     break;
                 case Asignacion:
@@ -108,7 +112,7 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Modulo:
                     resultado += "  <Operador modulo>\t" + lexer.lexeme + "\n";
                     break;
-                   case Exponencial:
+                case Exponencial:
                     resultado += "  <Exponencial>\t" + lexer.lexeme + "\n";
                     break;
                 case Op_logico:
@@ -129,7 +133,7 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Op_booleano:
                     resultado += "  <Operador booleano>\t" + lexer.lexeme + "\n";
                     break;
-                     case Nulo:
+                case Nulo:
                     resultado += "  <Nulo>\t" + lexer.lexeme + "\n";
                     break;
                 case Parentesis_a:
@@ -170,6 +174,32 @@ public class analizadorlexico extends javax.swing.JFrame {
                     break;
             }
         }
+    }
+
+    public void CrearArchivo() {
+
+        try {
+            int cont = 1;
+
+            String expr = (String) txtResultado.getText();
+           // Lexer lexer = new Lexer(new StringReader(expr));
+            //String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
+            //C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico
+            String ruta = "C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
+            String contenido = txtAnalizarLex.getText();
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -300,11 +330,13 @@ public class analizadorlexico extends javax.swing.JFrame {
     private void btnLimpiarLexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarLexActionPerformed
         // TODO add your handling code here:
         txtAnalizarLex.setText(null);
+
     }//GEN-LAST:event_btnLimpiarLexActionPerformed
 
     private void btnAnalizarLexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarLexActionPerformed
         try {
             analizarLexico();
+            CrearArchivo();
         } catch (IOException ex) {
             Logger.getLogger(analizadorlexico.class.getName()).log(Level.SEVERE, null, ex);
         }

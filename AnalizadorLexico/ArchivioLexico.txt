@@ -1,0 +1,6 @@
+LINEA 1		SIMBOLO
+  <Literales>	int
+  <Numero>		5
+  <Operador igual>	=
+  <Numero>		0
+  <Punto y coma>	;
