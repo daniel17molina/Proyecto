@@ -9,7 +9,9 @@ import java.nio.file.Paths;
 
 public class CrearLexemas {
     public static void main(String[] args) throws Exception {
-        String ruta1 = "C:/Users/jenif/OneDrive/Escritorio/Compiladores/AnalizadorLexico/src/analizadorlexico/Lexer.flex";
+        String ruta1 = "C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/src/analizadorlexico/Lexer.flex";
+        String ruta2 = "C:/Users/Pablo García/Documents/GitHub/Proyecto/AnalizadorLexico/src/analizadorlexico/Lexer.flex";
+        String ruta3 = "C:/Users/axelg/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/analisadorlexico/src/analizadorlexico/Lexer.flex";
         generar(ruta1);
     }
     public static void generar(String ruta1) throws IOException, Exception{
