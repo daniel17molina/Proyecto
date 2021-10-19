@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import javax.swing.JOptionPane;
 
 public class analizadorlexico extends javax.swing.JFrame {
 
@@ -196,6 +197,7 @@ public class analizadorlexico extends javax.swing.JFrame {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(contenido);
             bw.close();
+             JOptionPane.showMessageDialog(null, "SU ARCHIVO .TXT FUE CREADO CON EXITO");
         } catch (Exception e) {
             e.printStackTrace();
         }
