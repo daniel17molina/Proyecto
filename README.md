@@ -4,7 +4,7 @@ El proyecto, es un analizador léxico, el cual se realizo por medio de Java y Jf
 
 ## Integrantes
 
-Pablo Isaaac García Orellana - harvus1
-Jenifer Alejandra Rabanales Gamboa - 
-Daniel Estuardo Molina Castillo - daniel17molina
-Axel Cesar Osmundo Rodas Samayoa - axelgolin4
+* **Pablo Isaaac García Orellana - harvus1**
+* **Jenifer Alejandra Rabanales Gamboa - jenirg**
+* **Daniel Estuardo Molina Castillo - daniel17molina**
+* **Axel Cesar Osmundo Rodas Samayoa - axelgolin4**
