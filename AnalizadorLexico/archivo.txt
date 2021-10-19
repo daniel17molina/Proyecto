@@ -1,0 +1,12 @@
+int numero, numero2 = 0;
+float numero3=34.6;
+String pal = null;
+boolean aux;
+if(numero==5) {
+	aux=1;
+	numero2++;
+	numero3--;
+}
+for(x=0:x=5:x++){
+numero = numero + 5;
+}
