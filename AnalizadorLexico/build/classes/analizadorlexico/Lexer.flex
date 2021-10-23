@@ -4,8 +4,57 @@ import static analizadorlexico.Tokens.*;
 %class Lexer
 %type Tokens
 L=[a-zA-Z_]+
+LMayuscula=[A-Z]+
+Minusuculas=[a-z_]+
 D=[0-9]+
+SignoNumero=[-, ]+
+comentario=[//]
+comenincial=[/*]+
+comenfinal=[*/]+
+comilla =["\""]+ 
+Espacio=[ ]+
 espacio=[ ,\t,\r]+
+PDecimal =[.]+
+If =[if]+
+ELSE=[else]+
+integer=[Integer]+
+ParseInt =[parseInt]+
+float=[Float]+
+ParseFloat =[parseFloat]+
+Boleano=[Boolean]+
+ParseBoolean=[parseBoolean]+
+double=[Double]+
+ParseDouble=[parseDouble]+
+AString=[toString]+
+ParentesisInicial= [(]+
+ParentesisFinal = [)]+
+TipoDeDatoBoleando=[boolean]+
+Condicional=[>,<,==,!=,>=,<=]+
+PC =[;]+
+math=[Math]+
+radianes=[toRadians]+
+Sin=[sin]+
+Cos=[cos]+
+Tan=[tan]+
+Asi =[=]+
+SaltoLinea=[\n]+
+LlaveInicial=[{]+
+LlaveFinal=[}]+
+Log=[log]+
+Potencia=[pow]+
+Redondeo=[round]+
+Aleatorio=[ramdom]+
+Raiz=[sqrt]+
+system=[System]+
+Out=[out]+
+Println=[println]+
+UnionImpresion=[+]+
+Incremento=[++]+
+operacionesbasicas=[+,-,*,/,%]+
+For=[for]+
+INT =[int]+
+Decremento=[--]+
+VF = [true,false,1,0]+
 %{
     public String lexeme;
 %}
@@ -17,32 +66,33 @@ espacio=[ ,\t,\r]+
 /* Comentarios */
 ( "//"(.)* ) {/*Ignore*/}
 
+/* Comentario2 */
+( "/*"(.)* ) {/*Ignore*/}
+
+/* Comentario3 */
+( "*/"(.)* ) {/*Ignore*/}
+
+/* Comentario4 */
+( "*"(.)* ) {/*Ignore*/}
+
 /* Salto de linea */
 ( "\n" ) {return Linea;}
 
 /* Comillas */
-( "\"" ) {lexeme=yytext(); return Comillas;}
+/*( "\"" ) {lexeme=yytext(); return Comillas;}*/
 
 /* Tipos de datos */
-( byte | int | char | long | float | double  ) {lexeme=yytext(); return Literales;}
+( byte | int | char | long | float | double |String | boolean) {lexeme=yytext(); return TipoDeDato;}
 
-/* Tipo de dato String */
-( String ) {lexeme=yytext(); return Cadena;}
+/* Tipo de dato Cadena */
+{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla} {lexeme=yytext(); return CadenaDeTexto;}
 
-/* Palabra reservada If */
-( if ) {lexeme=yytext(); return If;}
-
-/* Palabra reservada Else */
-( else ) {lexeme=yytext(); return Else;}
 
 /* Palabra reservada Do */
 ( do ) {lexeme=yytext(); return Do;}
 
 /* Palabra reservada While */
 ( while ) {lexeme=yytext(); return While;}
-
-/* Palabra reservada For */
-( for ) {lexeme=yytext(); return For;}
 
 /* Palabra reservada Entrada */
 ( leer ) {lexeme=yytext(); return Entrada;}
@@ -52,21 +102,6 @@ espacio=[ ,\t,\r]+
 
 /* Operador Igual */
 ( "=" ) {lexeme=yytext(); return Asignacion;}
-
-/* Funcion predefinida parseInt */
-( "parseInt" ) {lexeme=yytext(); return parseInt;}
-
-/* Funcion predefinida parseChart */
-( "parseInt" ) {lexeme=yytext(); return parseChart;}
-
-/* Funcion predefinida parseString */
-( "parseInt" ) {lexeme=yytext(); return parseString;}
-
-/* Funcion predefinida parseDouble */
-( "parseInt" ) {lexeme=yytext(); return parseDouble;}
-
-/* Funcion predefinida parseDouble */
-( "parseInt" ) {lexeme=yytext(); return parseFloat;}
 
 /* Funcion Matematica Seno */
 ( "sen" ) {lexeme=yytext(); return Seno;}
@@ -80,8 +115,11 @@ espacio=[ ,\t,\r]+
 /* Funcion Matematica Logaritmo */
 ( "log" ) {lexeme=yytext(); return Logaritmo;}
 
+/* Suma */
+((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*{PC} {lexeme=yytext(); return Operacion_basica;}
+
 /* Operador Suma */
-( "+" ) {lexeme=yytext(); return Suma;}
+/*( "+" ) {lexeme=yytext(); return Suma;}*/
 
 /* Operador Resta */
 ( "-" ) {lexeme=yytext(); return Resta;}
@@ -101,8 +139,8 @@ espacio=[ ,\t,\r]+
 /* Operadores logicos */
 ( "&&" | "||" | "!" | "&" | "|" ) {lexeme=yytext(); return Op_logico;}
 
-/*Operadores Relacionales */
-( ">" | "<" | "==" | "!=" | ">=" | "<=") {lexeme = yytext(); return Op_relacional;}
+/*Operadores Condicional */
+( ">" | "<" | "==" | "!=" | ">=" | "<=") {lexeme = yytext(); return Operando_Condicional;}
 
 /* Operadores Atribucion */
 ( "+=" | "-="  | "*=" | "/=" | "%=" ) {lexeme = yytext(); return Op_atribucion;}
@@ -113,12 +151,14 @@ espacio=[ ,\t,\r]+
 /* Operadores Decremento */
 ( "--" ) {lexeme = yytext(); return Op_decremento;}
 
-
 /*Operadores Booleanos*/
 (true|false)      {lexeme = yytext(); return Op_booleano;}
 
 /*Nulo*/
 (null)   {lexeme = yytext(); return Nulo;}
+
+/* Variable */
+{Minusuculas}({L}|{D})* {lexeme=yytext(); return Variable;}
 
 /* Parentesis de apertura */
 ( "(" ) {lexeme=yytext(); return Parentesis_a;}
@@ -148,7 +188,73 @@ espacio=[ ,\t,\r]+
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 
 /* Numero */
-("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
+("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero_Entero;}
+
+/* Numero Real */
+("(-"{D}+")")|{D}{PDecimal}({D})* {lexeme=yytext(); return Numero_Real;}
+
+/* Numero entero negativo*/
+{SignoNumero}({D})* {lexeme=yytext(); return Numero_Entero_Negativo;}
+
+/* Numero Real negativo */
+{SignoNumero}({D})*{PDecimal}({D})* {lexeme=yytext(); return Numero_Real_Negativo;}
+
+/* Mostrar en pantalla */
+{system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{UnionImpresion}*{Espacio}*{VF}{Espacio}*{ParentesisFinal}{PC} {lexeme=yytext(); return Salida_de_pantalla;}
+
+/* STRING A INTEGER */
+{integer}{PDecimal}{ParseInt}{ParentesisInicial}({comilla}(({L}|{D})*{Espacio}*)*{comilla}){ParentesisFinal}{PC} {lexeme=yytext(); return String_a_Entero;}
+
+/* STRING A FLOAT */
+{float}{PDecimal}{ParseFloat}{ParentesisInicial}({comilla}(({L}|{D})*{Espacio}*)*{comilla}){ParentesisFinal}{PC} {lexeme=yytext(); return String_a_Real;}
+
+/* STRING A BOLEANO */
+{Boleano}{PDecimal}{ParseBoolean}{ParentesisInicial}({comilla}(({L}|{D})*{Espacio}*)*{comilla}){ParentesisFinal}{PC} {lexeme=yytext(); return String_a_Boleano;}
+
+/* STRING A Double */
+{double}{PDecimal}{ParseDouble}{ParentesisInicial}({comilla}(({L}|{D})*{Espacio}*)*{comilla}){ParentesisFinal}{PC} {lexeme=yytext(); return String_a_Double;}
+
+/* BOOLEAN A STRING */
+{Boleano}{PDecimal}{AString}{ParentesisInicial}(({L}|{D})*{Espacio}*)*{ParentesisFinal}{PC} {lexeme=yytext(); return BOOLEAN_a_STRING;}
+
+/* A RADIANES */
+{math}{PDecimal}{radianes}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return A_radianes;}
+
+/* Seno*/
+{math}{PDecimal}{Sin}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_seno;}
+
+/* Cos*/
+{math}{PDecimal}{Cos}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_cos;}
+
+/* Tan*/
+{math}{PDecimal}{Tan}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_tan;}
+
+/* Función Logaritmica*/
+{math}{PDecimal}{Log}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_logaritmica;}
+
+/* Función Potencia*/
+{math}{PDecimal}{Potencia}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_potencia;}
+
+/* Función Redondeo*/
+{math}{PDecimal}{Redondeo}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_Redondeo;}
+
+/* Función Número aleatorio*/
+{math}{PDecimal}{Aleatorio}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_Numero_Aleatorio;}
+
+/* Función Raiz*/
+{math}{PDecimal}{Raiz}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal}{PC} {lexeme=yytext(); return Funcion_Raiz;}
+
+/* Sentencia IF */
+{If}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*({L}|{D}|VF)*{Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}*{espacio}*({system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{UnionImpresion}*{Espacio}*{VF}{Espacio}*{ParentesisFinal}{PC}){SaltoLinea}*{LlaveFinal}{Espacio}*{ELSE}{Espacio}*{LlaveInicial}{SaltoLinea}*{espacio}*({system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{UnionImpresion}*{Espacio}*{VF}{Espacio}*{ParentesisFinal}{PC}){SaltoLinea}*{LlaveFinal} {lexeme=yytext(); return Sentencia_If;}
+
+/*  Pre incrementos*/
+({Incremento}|{Decremento})({Minusuculas}({L}|{D})*){Espacio}*{PC} {lexeme=yytext(); return pre_increm;}
+
+/*  Post incrementos*/
+({Minusuculas}({L}|{D})*)({Incremento}|{Decremento}){Espacio}*{PC} {lexeme=yytext(); return post_incremento;}
+
+/* Sentencia FOR */
+{For}{Espacio}*{ParentesisInicial}{Espacio}*{INT}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{Espacio}*{PC}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){PC}{Espacio}*({Minusuculas}({L}|{D})*)({Incremento}|{Decremento}){Espacio}*{ParentesisFinal}{Espacio}*{SaltoLinea}*{LlaveInicial}{Espacio}*{SaltoLinea}*{Espacio}* ({system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{UnionImpresion}*{Espacio}*{ParentesisFinal}{PC}){SaltoLinea}*{LlaveFinal} {lexeme=yytext(); return Sentencia_for;}
 
 /* Error de analisis */
  . {return ERROR;}

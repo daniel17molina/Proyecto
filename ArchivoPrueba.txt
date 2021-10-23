@@ -1,0 +1,50 @@
+
+3545345
+-53453
+564.685
+-6456.654
+"HOLA MUNDO"
+Float.parseFloat("Hola mundo");
+Integer.parseInt("Hola mundo");
+Boolean.parseBoolean("Hola mundo");
+Double.parseDouble("Hola mundo");
+boolean cadena2 = false;
+cadena2 = Boolean.toString(cadena);
+double b = Math.toRadians(2342.4);
+Math.sin(45.67);
+Math.cos(54.67);
+Math.tan(67.89);
+Math.log(2.7172);
+Math.round(2.5);
+Math.sqrt(5.67);
+System.out.println("I am in line2" + true );
+
+if var2 == var1 {
+System.out.println("I am in line2"+true);
+
+} else {
+
+System.out.println("I am in line2"+true);
+
+}
+
+5353 + 65456;
+534534 * 45345;
+5345 / 5;
+535 % 6456;
+ERROR 64564 - 646456;
+6456 + 53;
+var_1 * 53;
+53 / var45;
+var_1 % var_2;
+
+--d;
+d--;
+
+for ( int i = 645 ; i<=1000; i--) 
+{
+  System.out.println("I am in line2");
+
+};
+
+//COMENTARIO FADFAD

@@ -40,7 +40,7 @@ public class analizadorlexico extends javax.swing.JFrame {
 
         String expr = (String) txtResultado.getText();
         Lexer lexer = new Lexer(new StringReader(expr));
-        
+
         String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
         while (true) {
             Tokens token = lexer.yylex();
@@ -53,21 +53,13 @@ public class analizadorlexico extends javax.swing.JFrame {
                     cont++;
                     resultado += "LINEA " + cont + "\n";
                     break;
-                case Comillas:
-                    resultado += "  <Comillas>\t\t" + lexer.lexeme + "\n";
+                case TipoDeDato:
+                    resultado += "  <Tipo de Dato>\t" + lexer.lexeme + "\n";
                     break;
-                case Cadena:
-                    resultado += "  <Tipo de dato>\t" + lexer.lexeme + "\n";
+                case CadenaDeTexto:
+                    resultado += "  <Cadena de Texto>\t" + lexer.lexeme + "\n";
                     break;
-                case Literales:
-                    resultado += "  <Literales>\t" + lexer.lexeme + "\n";
-                    break;
-                case If:
-                    resultado += "  <Reservada if>\t" + lexer.lexeme + "\n";
-                    break;
-                case Else:
-                    resultado += "  <Reservada else>\t" + lexer.lexeme + "\n";
-                    break;
+
                 case Do:
                     resultado += "  <Reservada do>\t" + lexer.lexeme + "\n";
                     break;
@@ -125,7 +117,7 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Op_decremento:
                     resultado += "  <Operador decremento>\t" + lexer.lexeme + "\n";
                     break;
-                case Op_relacional:
+                case Operando_Condicional:
                     resultado += "  <Condicional>\t" + lexer.lexeme + "\n";
                     break;
                 case Op_atribucion:
@@ -136,6 +128,9 @@ public class analizadorlexico extends javax.swing.JFrame {
                     break;
                 case Nulo:
                     resultado += "  <Nulo>\t" + lexer.lexeme + "\n";
+                    break;
+                case Variable:
+                    resultado += "  <Variable>\t\t" + lexer.lexeme + "\n";
                     break;
                 case Parentesis_a:
                     resultado += "  <Parentesis de apertura>\t" + lexer.lexeme + "\n";
@@ -164,8 +159,80 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Identificador:
                     resultado += "  <Identificador>\t\t" + lexer.lexeme + "\n";
                     break;
-                case Numero:
-                    resultado += "  <Numero>\t\t" + lexer.lexeme + "\n";
+                case Numero_Entero:
+                    resultado += "  <Número Entero>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Numero_Real:
+                    resultado += "  <Número Real>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Numero_Entero_Negativo:
+                    resultado += "  <Número Entero Negativo>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Numero_Real_Negativo:
+                    resultado += "  <Número Real Negativo>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case String_a_Real:
+                    resultado += "  <Funciones de conversión (String a Real)>\t" + lexer.lexeme + "\n";
+                    break;
+                case String_a_Entero:
+                    resultado += "  <Funciones de conversión (String a Entero)>\t" + lexer.lexeme + "\n";
+                    break;
+                case String_a_Boleano:
+                    resultado += "  <Funciones de conversión (String a Boleano)>\t" + lexer.lexeme + "\n";
+                    break;
+                case String_a_Double:
+                    resultado += "  <Funciones de conversión (String a Double)>\t" + lexer.lexeme + "\n";
+                    break;
+                case BOOLEAN_a_STRING:
+                    resultado += "  <Funciones de conversión (Boolean a String)>\t" + lexer.lexeme + "\n";
+                    break;
+                case Sentencia_If:
+                    resultado += "  <Sentencia IF>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Asignacion_boleana:
+                    resultado += "  <Asignación Boleana>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case A_radianes:
+                    resultado += "  <Conversion a Radianes>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_seno:
+                    resultado += "  <Función Seno>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_cos:
+                    resultado += "  <Función Coseno>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_tan:
+                    resultado += "  <Función Tangente>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_logaritmica:
+                    resultado += "  <Función Logaritmica>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_Redondeo:
+                    resultado += "  <Función Redondeo>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_Numero_Aleatorio:
+                    resultado += "  <Función Número Aleatorio>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_potencia:
+                    resultado += "  <Función Potencia>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_Raiz:
+                    resultado += "  <Función Raiz>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Salida_de_pantalla:
+                    resultado += "  <Salida de pantalla>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Operacion_basica:
+                    resultado += "  <Operación  aritmética>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case pre_increm:
+                    resultado += "  <Pre-incrementos>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case post_incremento:
+                    resultado += "  <Post-incrementos>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Sentencia_for:
+                    resultado += "  <Sentencia For>\t\t" + lexer.lexeme + "\n";
                     break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";
@@ -183,7 +250,7 @@ public class analizadorlexico extends javax.swing.JFrame {
             int cont = 1;
 
             String expr = (String) txtResultado.getText();
-           // Lexer lexer = new Lexer(new StringReader(expr));
+            // Lexer lexer = new Lexer(new StringReader(expr));
             //String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
             //C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico
             String ruta = "C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
@@ -199,7 +266,7 @@ public class analizadorlexico extends javax.swing.JFrame {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(contenido);
             bw.close();
-             JOptionPane.showMessageDialog(null, "SU ARCHIVO .TXT FUE CREADO CON EXITO");
+            JOptionPane.showMessageDialog(null, "SU ARCHIVO .TXT FUE CREADO CON EXITO");
         } catch (Exception e) {
             e.printStackTrace();
         }
