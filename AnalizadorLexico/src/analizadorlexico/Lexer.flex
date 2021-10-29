@@ -54,6 +54,11 @@ operacionesbasicas=[+,-,*,/,%]+
 For=[for]+
 INT =[int]+
 Decremento=[--]+
+Do=[do]+
+While=[while]+
+CorcheteInicial=[\[]+
+CorcheteFinal=[\]]+
+Coma=[,]+
 VF = [true,false,1,0]+
 %{
     public String lexeme;
@@ -115,7 +120,7 @@ VF = [true,false,1,0]+
 /* Funcion Matematica Logaritmo */
 ( "log" ) {lexeme=yytext(); return Logaritmo;}
 
-/* Suma */
+/* Operaciones */
 ((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*{PC} {lexeme=yytext(); return Operacion_basica;}
 
 /* Operador Suma */
@@ -255,6 +260,16 @@ VF = [true,false,1,0]+
 
 /* Sentencia FOR */
 {For}{Espacio}*{ParentesisInicial}{Espacio}*{INT}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{Espacio}*{PC}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){PC}{Espacio}*({Minusuculas}({L}|{D})*)({Incremento}|{Decremento}){Espacio}*{ParentesisFinal}{Espacio}*{SaltoLinea}*{LlaveInicial}{Espacio}*{SaltoLinea}*{Espacio}* ({system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{UnionImpresion}*{Espacio}*{ParentesisFinal}{PC}){SaltoLinea}*{LlaveFinal} {lexeme=yytext(); return Sentencia_for;}
+ 
+
+/* do-while */
+{Do}{Espacio}*{SaltoLinea}*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}* (((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*){Espacio}*{SaltoLinea}*{Espacio}* ({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}* (((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*){Espacio}*{SaltoLinea}*{Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{D}*{Espacio}* {lexeme=yytext(); return Ciclo_While;}
+
+/* Arreglos */
+(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{CorcheteInicial}{Espacio}*{D}*{Espacio}*{CorcheteFinal}{Espacio}*{Asi}{Espacio}*{LlaveInicial}{Espacio}*(({D}*{Espacio}*{Coma}{Espacio}*{D}*{Espacio}*)){Espacio}*{LlaveFinal}{Espacio}* {lexeme=yytext(); return Arreglo;}
+
+/* Dentro de Arreglos */
+({D}*{Espacio}*{Coma}{Espacio}*{D}*{Espacio}*) {lexeme=yytext(); return Dentro_Arreglo;}
 
 /* Error de analisis */
  . {return ERROR;}
