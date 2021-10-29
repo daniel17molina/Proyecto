@@ -59,6 +59,8 @@ While=[while]+
 CorcheteInicial=[\[]+
 CorcheteFinal=[\]]+
 Coma=[,]+
+Estado=[private, public, protected]+
+Class=[class]+
 VF = [true,false,1,0]+
 %{
     public String lexeme;
@@ -265,6 +267,10 @@ VF = [true,false,1,0]+
 /* do-while */
 {Do}{Espacio}*{SaltoLinea}*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}* (((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*){Espacio}*{SaltoLinea}*{Espacio}* ({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}* (((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*){Espacio}*{SaltoLinea}*{Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{D}*{Espacio}* {lexeme=yytext(); return Ciclo_While;}
 
+/* classes */
+{Estado}*{Espacio}*{Class}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{Espacio}*{CorcheteInicial}{SaltoLinea}{Espacio}*({Estado}*{Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){PC}{SaltoLinea}*)*
+
+  
 /* Arreglos */
 (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{CorcheteInicial}{Espacio}*{D}*{Espacio}*{CorcheteFinal}{Espacio}*{Asi}{Espacio}*{LlaveInicial}{Espacio}*(({D}*{Espacio}*{Coma}{Espacio}*{D}*{Espacio}*)){Espacio}*{LlaveFinal}{Espacio}* {lexeme=yytext(); return Arreglo;}
 

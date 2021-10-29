@@ -69,6 +69,9 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case For:
                     resultado += "  <Reservada while>\t" + lexer.lexeme + "\n";
                     break;
+                case Ciclo_While:
+                    resultado += " <Ciclo While>\t\t" + lexer.lexeme + "\n";
+                    break;
                 case Entrada:
                     resultado += "  <Reservada Entrada>\t" + lexer.lexeme + "\n";
                     break;
