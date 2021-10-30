@@ -1,16 +1,5 @@
 LINEA 1		SIMBOLO
-LINEA 2
-  <Sentencia For>		for ( int i = 645 ; i<=1000; i--) 
-{
-  System.out.println("I am in line2");
-
-}
-LINEA 3
-  <Sentencia IF>		if var2 == var1 {
-System.out.println("I am in line2"+true);
-
-} else {
-
-System.out.println("I am in line2"+true);
-
-}
+  <Clase> 	public class Name {
+ private String first;
+ private String last;
+private String last;

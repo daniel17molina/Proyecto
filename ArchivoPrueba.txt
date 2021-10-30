@@ -38,4 +38,8 @@ a = 5 + b
 b = b % 4
 while b < 10
 
+public class Name {
+ private String first;
+ private String last;
+
 

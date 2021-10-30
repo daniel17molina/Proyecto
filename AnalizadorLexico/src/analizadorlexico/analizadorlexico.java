@@ -237,6 +237,9 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Sentencia_for:
                     resultado += "  <Sentencia For>\t\t" + lexer.lexeme + "\n";
                     break;
+                    case Clase:
+                    resultado += "  <Clase> \t" + lexer.lexeme + "\n";
+                    break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";
                     break;

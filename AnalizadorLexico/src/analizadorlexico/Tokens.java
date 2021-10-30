@@ -68,5 +68,9 @@ public enum Tokens {
     pre_increm,
     post_incremento,
     Sentencia_for,
+    Ciclo_While,
+    Arreglo,
+    Dentro_Arreglo,
+    Clase,
     ERROR
 }
