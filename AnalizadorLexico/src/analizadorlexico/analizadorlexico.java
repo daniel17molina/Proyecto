@@ -240,6 +240,9 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Clase:
                     resultado += " <Clase> \t" + lexer.lexeme + "\n";
                     break;
+                case Funcion_recursiva:
+                    resultado += " <Función Recursiva> \t" + lexer.lexeme + "\n";
+                    break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";
                     break;

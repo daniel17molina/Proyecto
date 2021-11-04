@@ -72,5 +72,6 @@ public enum Tokens {
     Arreglo,
     Dentro_Arreglo,
     Clase,
+    Funcion_recursiva,
     ERROR
 }

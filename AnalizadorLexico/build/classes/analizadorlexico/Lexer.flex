@@ -273,6 +273,13 @@ VF = [true,false,1,0]+
 {Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}{Espacio}* (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisFinal} {lexeme=yytext(); return Clase;}
 {Espacio}*{SaltoLinea}{Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}{Espacio}{system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}
 {comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{ParentesisFinal}{PC}{SaltoLinea}{Espacio}{LlaveFinal} {lexeme=yytext(); return Clase;}
+
+/* Recursividad */
+(( byte | int | char | long | float | double |String | boolean)){Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{ParentesisInicial}{Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisFinal}{Espacio}*{SaltoLinea}*
+{If}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*({L}|{D}|VF)*{Espacio}*{Espacio}*{SaltoLinea}*
+{Espacio}*{retornar}{Espacio}*({L}|{D}|VF)*{Espacio}*{SaltoLinea}*{Espacio}*{ELSE}{Espacio}*{SaltoLinea}*
+{Espacio}*{retornar}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*({LMayuscula}({L}|{D})*)
+{Espacio}*{ParentesisInicial}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{menos}{Espacio}*{D}*{Espacio}*{ParentesisFinal} {lexeme=yytext(); return Funcion_recursiva;}
   
 /* Arreglos */
 (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{CorcheteInicial}{Espacio}*{D}*{Espacio}*{CorcheteFinal}{Espacio}*{Asi}{Espacio}*{LlaveInicial}{Espacio}*(({D}*{Espacio}*{Coma}{Espacio}*{D}*{Espacio}*)){Espacio}*{LlaveFinal}{Espacio}* {lexeme=yytext(); return Arreglo;}
