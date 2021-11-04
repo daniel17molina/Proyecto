@@ -267,9 +267,12 @@ VF = [true,false,1,0]+
 {Do}{Espacio}*{SaltoLinea}*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}* (((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*){Espacio}*{SaltoLinea}*{Espacio}* ({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}* (((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*){Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*){Espacio}*{SaltoLinea}*{Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{D}*{Espacio}* {lexeme=yytext(); return Ciclo_While;}
 
 /* classes */
-(( private | public | protected)){Espacio}*{Class}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}{Espacio}*((( private | public | protected)){Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){PC}{SaltoLinea}*{Espacio}*)* {lexeme=yytext(); return Clase;}
-
-/*  */
+(( private | public | protected)){Espacio}*{Class}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}
+{Espacio}*((( private | public | protected)){Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){PC}{SaltoLinea}*{Espacio}*)*
+(( private | public | protected)){Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisInicial}{Espacio}*(( byte | int | char | long | float | double |String | boolean))
+{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}{Espacio}* (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisFinal} {lexeme=yytext(); return Clase;}
+{Espacio}*{SaltoLinea}{Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}{Espacio}{system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}
+{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{ParentesisFinal}{PC}{SaltoLinea}{Espacio}{LlaveFinal} {lexeme=yytext(); return Clase;}
   
 /* Arreglos */
 (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{CorcheteInicial}{Espacio}*{D}*{Espacio}*{CorcheteFinal}{Espacio}*{Asi}{Espacio}*{LlaveInicial}{Espacio}*(({D}*{Espacio}*{Coma}{Espacio}*{D}*{Espacio}*)){Espacio}*{LlaveFinal}{Espacio}* {lexeme=yytext(); return Arreglo;}
