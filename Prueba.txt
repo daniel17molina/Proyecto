@@ -1,9 +1,14 @@
-
+//ENTERO POSOTIVO
 3545345
+//ENTERO NEGATIVO
 -53453
+//REAL POSOTIVO
 564.685
+//REAL NEGATIVO
 -6456.654
+//CADENA DE TEXTO
 "HOLA MUNDO"
+
 5353 + 65456;
 534534 * 45345;
 5345 / 5;
@@ -13,6 +18,7 @@ ERROR 64564 - 646456;
 var_1 * 53;
 53 / var45;
 var_1 % var_2;
+//Pre y post incrementos
 --d;
 d--;
 " Hola mundo "
@@ -54,3 +60,9 @@ desde i = 0 mientras i < 5 hacer
  escribir i ;
  i = i +2;
 // la salida ser ´a : 0 2 4
+
+
+hacer
+ a = 5 + b
+ b = b %4
+mientras b < 10

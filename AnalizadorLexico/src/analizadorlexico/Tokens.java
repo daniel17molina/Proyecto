@@ -75,5 +75,7 @@ public enum Tokens {
     Funcion_recursiva,
     Sentencia_forINCDEC,
     Sentencia_forinc,
+    Salida2,
+    Entrada2,
     ERROR
 }

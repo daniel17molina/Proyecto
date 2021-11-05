@@ -244,10 +244,16 @@ public class analizadorlexico extends javax.swing.JFrame {
                     resultado += " <Función Recursiva> \t" + lexer.lexeme + "\n";
                     break;
                 case Sentencia_forINCDEC:
-                    resultado += " < ciclo DESDE decrementando> \t" + lexer.lexeme + "\n";
+                    resultado += " <Ciclo DESDE decrementando> \t" + lexer.lexeme + "\n";
                     break;
                 case Sentencia_forinc:
-                    resultado += " <  ciclo DESDE sin incremento> \t" + lexer.lexeme + "\n";
+                    resultado += " <Ciclo DESDE sin incremento> \t" + lexer.lexeme + "\n";
+                    break;
+                case Salida2:
+                    resultado += " <Salida de pantalla> \t" + lexer.lexeme + "\n";
+                    break;
+                    case Entrada2:
+                    resultado += " <Entra de datos> \t" + lexer.lexeme + "\n";
                     break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";

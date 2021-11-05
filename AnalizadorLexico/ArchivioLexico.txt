@@ -1,4 +1,8 @@
 LINEA 1		SIMBOLO
- <  ciclo DESDE sin incremento> 	desde i = 0 mientras i < 5 hacer
- escribir i ;
- i = i +2;
+ <Salida de pantalla> 	escribir " Ingrese un numero entero "
+LINEA 2
+ <Entra de datos> 	leer variableEntera ;
+LINEA 3
+ <Salida de pantalla> 	escribir " Ingrese su nombre "
+LINEA 4
+ <Entra de datos> 	leer variableCadena

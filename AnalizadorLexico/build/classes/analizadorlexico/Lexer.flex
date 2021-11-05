@@ -93,7 +93,7 @@ Decrementar =[decrementar]+
 (entero | cadena | real | double | boleano) {lexeme=yytext(); return TipoDeDato;}
 
 /* Tipo de dato Cadena */
-{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla} {lexeme=yytext(); return CadenaDeTexto;}
+{Espacio}*{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla} {lexeme=yytext(); return CadenaDeTexto;}
 
 
 /* Palabra reservada While */
@@ -271,6 +271,17 @@ Decrementar =[decrementar]+
 {Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}    
 {Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*{D}*{PC} {lexeme=yytext(); return Sentencia_forinc;}
 
+/* do-while */
+{Hacer}{Espacio}*{SaltoLinea}*({Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*((("(-"{D}+")")|{D}+)*|{Minusuculas}({L}|{D})*)  
+{Espacio}*{operacionesbasicas}{Espacio}*({D}*|{Minusuculas}({L}|{D})*){Espacio}*{SaltoLinea}*)* 
+{Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{D}*{Espacio}*   {lexeme=yytext(); return Ciclo_While;} 
+
+/* Salida de pantalla */
+{Espacio}*{system}{Espacio}*((({Minusuculas}({L}|{D})*)|{D}*|{VF}|{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}){Espacio}*{Coma}*{Espacio}*)*{Espacio}*{PC}*   {lexeme=yytext(); return Salida2;}
+
+
+/* Captura de pantall */
+{Espacio}*{leer}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}*  {lexeme=yytext(); return Entrada2;}
 
 /* Error de analisis */
  . {return ERROR;}
