@@ -16,7 +16,7 @@ Espacio=[ ]+
 espacio=[ ,\t,\r]+
 PDecimal =[.]+
 If =[si]+
-ELSE=[entonces]+
+ELSE=[sino]+
 integer=[entero]+
 ParseInt =[cadenaAEntero]+
 float=[real]+
@@ -51,15 +51,17 @@ operacionesbasicas=[+,-,*,/,%]+
 For=[desde]+
 INT =[entero]+
 Decremento=[--]+
-Do=[hacer]+
+Do=[entonces]+
 While=[mientras]+
 CorcheteInicial=[\[]+
 CorcheteFinal=[\]]+
 Coma=[,]+
 Class=[clase]+
-retornar=[retornar]+
+retornar=[devolver]+
 menos=[-]+
 VF = [verdadero,falso,1,0]+
+Incrementar = [incrementar]+
+Decrementar = [decrementar]+
 %{
     public String lexeme;
 %}
@@ -204,7 +206,7 @@ VF = [verdadero,falso,1,0]+
 /* Mostrar en pantalla */
 {system}{Espacio}*{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{UnionImpresion}*{Espacio}*{VF}{Espacio}* {lexeme=yytext(); return Salida_de_pantalla;}
 
-//AQUI
+
 /* CADENA A ENTERO */
 {ParseInt}{ParentesisInicial}({comilla}(({L}|{D})*{Espacio}*)*{comilla}){ParentesisFinal} {lexeme=yytext(); return String_a_Entero;}
 
@@ -246,6 +248,18 @@ VF = [verdadero,falso,1,0]+
 
 /* Función Raiz*/
 {Raiz}{ParentesisInicial}(("(-"{D}+")")|{D}{PDecimal}({D})*){ParentesisFinal} {lexeme=yytext(); return Funcion_Raiz;}
+
+/* Sentencia IF */
+{If}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*({L}|{D}|VF)*{Espacio}*{Do}{Espacio}*{SaltoLinea}*{Espacio}*{retornar}{Espacio}*({L}|{D}|{VF})*{Espacio}*{SaltoLinea}*{Espacio}*{ELSE}*{Espacio}*{SaltoLinea}*{Espacio}*{retornar}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Espacio}* {lexeme=yytext(); return Sentencia_If;}
+
+/*  Pre incrementos*/
+({Incremento}|{Decremento})({Minusuculas}({L}|{D})*){Espacio}* {lexeme=yytext(); return pre_increm;}
+
+/*  Post incrementos*/
+({Minusuculas}({L}|{D})*)({Incremento}|{Decremento}){Espacio}* {lexeme=yytext(); return post_incremento;}
+
+/* Sentencia FOR */
+{For}{Espacio}*{integer}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{Espacio}*{While}*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*({Incrementar}|{Decrementar}){Espacio}*{D}{Espacio}*{Do}{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC} {lexeme=yytext(); return Sentencia_for;}
 
 /* Error de analisis */
  . {return ERROR;}

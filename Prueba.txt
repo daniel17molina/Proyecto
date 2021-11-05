@@ -35,3 +35,9 @@ redondeo(2.5)
 potencia(2.5)
 aleatorio(54.5)
 raiz(54.5)
+
+si valor == 1 entonces
+devolver 1
+sino
+devolver valor
+

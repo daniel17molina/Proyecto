@@ -266,7 +266,7 @@ public class analizadorlexico extends javax.swing.JFrame {
             String ruta2 = "C:/Users/Pablo García/Documents/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
             String ruta3 = "C:/Users/axelg/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
             String contenido = txtAnalizarLex.getText();
-            File file = new File(ruta);
+            File file = new File(ruta2);
             // Si el archivo no existe es creado
             if (!file.exists()) {
                 file.createNewFile();
