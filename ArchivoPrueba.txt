@@ -17,8 +17,19 @@ Math.tan(67.89);
 Math.log(2.7172);
 Math.round(2.5);
 Math.sqrt(5.67);
-System.out.println("I am in line2" + true );if var2 == var1 {
-System.out.println("I am in line2"+true);} else {System.out.println("I am in line2"+true);}5353 + 65456;
+System.out.println("I am in line2" + true );
+
+
+
+if var2 == var1 {
+System.out.println(" I am in line2 " + true );
+} else {
+System.out.println("I am in line2"+true);
+}
+
+
+
+5353 + 65456;
 534534 * 45345;
 5345 / 5;
 535 % 6456;
@@ -28,18 +39,38 @@ var_1 * 53;
 53 / var45;
 var_1 % var_2;--d;
 d--;
+
+_____________________________________________
+
 for ( int i = 645 ; i <= 1000; i++)
 {
-System.out.println("I am in line2");}//COMENTARIO FADFAD
+System.out.println("I am in line2");
+
+}
+_________________________________________
+//COMENTARIO FADFAD
 /* esto tambien es un comentario
 * pero de varias l´ı neas
-*/do
+*/
+
+do
 a = 5 + b
 b = b % 4
 while b < 10
-
+_____________________________________________________________
 public class Name {
  private String first;
  private String last;
+ public int sum ( int a , int b ) 
+  { 
+ System.out.println(" I am in line2 ");
+ }
+_____________________________________________________________
+
+int Funcion_recursiva ( int valor )
+if var2 == 1 
+ return 1 
+ else 
+ return var2 + Funcion_recursiva ( valor - 1 )
 
 

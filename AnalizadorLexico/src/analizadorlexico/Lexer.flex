@@ -60,6 +60,8 @@ CorcheteInicial=[\[]+
 CorcheteFinal=[\]]+
 Coma=[,]+
 Class=[class]+
+retornar=[return]+
+menos=[-]+
 VF = [true,false,1,0]+
 %{
     public String lexeme;
@@ -270,13 +272,13 @@ VF = [true,false,1,0]+
 (( private | public | protected)){Espacio}*{Class}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}
 {Espacio}*((( private | public | protected)){Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){PC}{SaltoLinea}*{Espacio}*)*
 (( private | public | protected)){Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisInicial}{Espacio}*(( byte | int | char | long | float | double |String | boolean))
-{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}{Espacio}* (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisFinal} {lexeme=yytext(); return Clase;}
+{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}{Espacio}* (( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisFinal} 
 {Espacio}*{SaltoLinea}{Espacio}*{LlaveInicial}{Espacio}*{SaltoLinea}{Espacio}{system}{PDecimal}{Out}{PDecimal}{Println}{ParentesisInicial}
-{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{ParentesisFinal}{PC}{SaltoLinea}{Espacio}{LlaveFinal} {lexeme=yytext(); return Clase;}
+{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}{Espacio}*{ParentesisFinal}{PC}{SaltoLinea}{Espacio}*{LlaveFinal} {lexeme=yytext(); return Clase;}
 
 /* Recursividad */
 (( byte | int | char | long | float | double |String | boolean)){Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{ParentesisInicial}{Espacio}*(( byte | int | char | long | float | double |String | boolean)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{ParentesisFinal}{Espacio}*{SaltoLinea}*
-{If}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*({L}|{D}|VF)*{Espacio}*{Espacio}*{SaltoLinea}*
+{If}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*({L}|{D}|VF)*{Espacio}*{SaltoLinea}*
 {Espacio}*{retornar}{Espacio}*({L}|{D}|VF)*{Espacio}*{SaltoLinea}*{Espacio}*{ELSE}{Espacio}*{SaltoLinea}*
 {Espacio}*{retornar}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*({LMayuscula}({L}|{D})*)
 {Espacio}*{ParentesisInicial}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{menos}{Espacio}*{D}*{Espacio}*{ParentesisFinal} {lexeme=yytext(); return Funcion_recursiva;}

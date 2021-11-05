@@ -1,5 +1,15 @@
 LINEA 1		SIMBOLO
-  <Clase> 	public class Name {
+ <Función Recursiva> 	int Funcion_recursiva ( int valor )
+if var2 == 1 
+ return 1 
+ else 
+ return var2 + Funcion_recursiva ( valor - 1 )
+LINEA 2
+LINEA 3
+ <Clase> 	public class Name {
  private String first;
  private String last;
-private String last;
+ public int sum ( int a , int b ) 
+  { 
+ System.out.println(" I am in line2 ");
+ }
