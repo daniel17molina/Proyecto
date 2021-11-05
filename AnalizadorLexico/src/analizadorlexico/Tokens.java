@@ -77,5 +77,8 @@ public enum Tokens {
     Sentencia_forinc,
     Salida2,
     Entrada2,
+    DeclaracionVariable,
+    Funcion_sumar,
+    Funcion_sumar2,
     ERROR
 }

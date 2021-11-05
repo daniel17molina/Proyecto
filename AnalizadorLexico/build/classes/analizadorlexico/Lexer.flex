@@ -60,6 +60,7 @@ Coma=[,]+
 Class=[clase]+
 retornar=[devolver]+
 menos=[-]+
+Real=[real]+
 VF = [verdadero,falso,1,0]+
 Incrementar =[incrementar]+
 Decrementar =[decrementar]+
@@ -90,7 +91,7 @@ Decrementar =[decrementar]+
 /*( "\"" ) {lexeme=yytext(); return Comillas;} */
 
 /* Tipos de datos */
-(entero | cadena | real | double | boleano) {lexeme=yytext(); return TipoDeDato;}
+( entero | cadena | real | double | boleano) {lexeme=yytext(); return TipoDeDato;}
 
 /* Tipo de dato Cadena */
 {Espacio}*{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla} {lexeme=yytext(); return CadenaDeTexto;}
@@ -280,8 +281,19 @@ Decrementar =[decrementar]+
 {Espacio}*{system}{Espacio}*((({Minusuculas}({L}|{D})*)|{D}*|{VF}|{comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla}){Espacio}*{Coma}*{Espacio}*)*{Espacio}*{PC}*   {lexeme=yytext(); return Salida2;}
 
 
-/* Captura de pantall */
+/* Captura de pantalla */
 {Espacio}*{leer}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}*  {lexeme=yytext(); return Entrada2;}
+
+/*Declaración de variables */
+(( entero | cadena | real | double | boleano)){Espacio}*(({Minusuculas}({L}|{D})*){Espacio}*{Coma}*{Espacio}*{Asi}*{D}*|(({Minusuculas}({L}|{D})*){Espacio}*{Coma}*{Espacio}*)*)* {lexeme=yytext(); return DeclaracionVariable;}
+
+/*función sumar original */
+{Espacio}*{integer}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{ParentesisInicial}({Espacio}*{integer}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}*)*{ParentesisFinal}{Espacio}*{SaltoLinea}*
+{Espacio}*{retornar}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*({Minusuculas}({L}|{D})*) {lexeme=yytext(); return Funcion_sumar;}
+
+/*función sumar original */
+{Espacio}*{Real}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{ParentesisInicial}({Espacio}*{Real}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}*)*{ParentesisFinal}{Espacio}*{SaltoLinea}*
+{Espacio}*{retornar}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*({Minusuculas}({L}|{D})*) {lexeme=yytext(); return Funcion_sumar2;}
 
 /* Error de analisis */
  . {return ERROR;}

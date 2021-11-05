@@ -61,8 +61,27 @@ desde i = 0 mientras i < 5 hacer
  i = i +2;
 // la salida ser ´a : 0 2 4
 
-
+//CICLO DO
 hacer
  a = 5 + b
  b = b %4
 mientras b < 10
+
+
+escribir " Ingrese un numero entero "
+leer variableEntera ;
+escribir " Ingrese su nombre "
+leer variableCadena
+
+//DECLARACION DE VARIABLES
+entero contador = 0
+entero i , j = 0
+entero a ,b , c
+
+// función sumar original
+entero Sumar ( entero a , entero b )
+ devolver a + b
+
+// función sumar para tipos reales
+real Sumar ( real a , real b )
+ devolver a + b

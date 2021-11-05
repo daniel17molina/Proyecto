@@ -252,8 +252,17 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case Salida2:
                     resultado += " <Salida de pantalla> \t" + lexer.lexeme + "\n";
                     break;
-                    case Entrada2:
+                case Entrada2:
                     resultado += " <Entra de datos> \t" + lexer.lexeme + "\n";
+                    break;
+                case DeclaracionVariable:
+                    resultado += " <Declaración de variables> \t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_sumar:
+                    resultado += " < Función sumar original> \t" + lexer.lexeme + "\n";
+                    break;
+                case Funcion_sumar2:
+                    resultado += " < Función sumar para tipos reales> \t" + lexer.lexeme + "\n";
                     break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";

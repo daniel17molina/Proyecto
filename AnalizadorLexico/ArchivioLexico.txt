@@ -1,8 +1,1 @@
 LINEA 1		SIMBOLO
- <Salida de pantalla> 	escribir " Ingrese un numero entero "
-LINEA 2
- <Entra de datos> 	leer variableEntera ;
-LINEA 3
- <Salida de pantalla> 	escribir " Ingrese su nombre "
-LINEA 4
- <Entra de datos> 	leer variableCadena
