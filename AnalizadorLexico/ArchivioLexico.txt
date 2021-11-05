@@ -1,17 +1,18 @@
 LINEA 1		SIMBOLO
+LINEA 2
   <Variable>		desde
-  <Tipo de Dato>	entero
   <Variable>		i
   <Operador igual>	=
-  <Número Entero Negativo>		 0
+  <Número Entero>		0
   <Reservada while>	mientras
   <Variable>		i
   <Condicional>	<
-  <Número Entero Negativo>		 5
-  <Variable>		incrementar
-  <Número Entero Negativo>		 2
-  <Reservada do>	hacer
-LINEA 2
+  <Número Entero>		5
+  <Variable>		hacer
+LINEA 3
   <Reservada Salida>	escribir
   <Variable>		i
   <Punto y coma>	;
+LINEA 4
+  <Variable>		i
+  <Operador igual>	=

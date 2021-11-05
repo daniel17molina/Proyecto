@@ -235,13 +235,19 @@ public class analizadorlexico extends javax.swing.JFrame {
                     resultado += "  <Post-incrementos>\t\t" + lexer.lexeme + "\n";
                     break;
                 case Sentencia_for:
-                    resultado += "  <Sentencia For>\t\t" + lexer.lexeme + "\n";
+                    resultado += "  < ciclo DESDE>\t\t" + lexer.lexeme + "\n";
                     break;
                 case Clase:
                     resultado += " <Clase> \t" + lexer.lexeme + "\n";
                     break;
                 case Funcion_recursiva:
                     resultado += " <Función Recursiva> \t" + lexer.lexeme + "\n";
+                    break;
+                case Sentencia_forINCDEC:
+                    resultado += " < ciclo DESDE decrementando> \t" + lexer.lexeme + "\n";
+                    break;
+                case Sentencia_forinc:
+                    resultado += " <  ciclo DESDE sin incremento> \t" + lexer.lexeme + "\n";
                     break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";
@@ -266,7 +272,7 @@ public class analizadorlexico extends javax.swing.JFrame {
             String ruta2 = "C:/Users/Pablo García/Documents/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
             String ruta3 = "C:/Users/axelg/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/ArchivioLexico.txt";
             String contenido = txtAnalizarLex.getText();
-            File file = new File(ruta2);
+            File file = new File(ruta);
             // Si el archivo no existe es creado
             if (!file.exists()) {
                 file.createNewFile();

@@ -17,7 +17,7 @@ public class CrearLexemas {
         String ruta1 = "C:/Users/jenif/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/src/analizadorlexico/Lexer.flex";
         String ruta2 = "C:/Users/Pablo García/Documents/GitHub/Proyecto/AnalizadorLexico/src/analizadorlexico/Lexer.flex";
         String ruta3 = "C:/Users/axelg/OneDrive/Documentos/GitHub/Proyecto/AnalizadorLexico/analisadorlexico/src/analizadorlexico/Lexer.flex";
-        generar(ruta2);
+        generar(ruta1);
     }
     public static void generar(String ruta1) throws IOException, Exception{
         File archivo;

@@ -7,7 +7,7 @@ L=[a-zA-Z_]+
 LMayuscula=[A-Z]+
 Minusuculas=[a-z_]+
 D=[0-9]+
-SignoNumero=[-, ]+
+SignoNumero=[-]+
 comentario=[//]
 comenincial=[/*]+
 comenfinal=[*/]+
@@ -52,6 +52,7 @@ For=[desde]+
 INT =[entero]+
 Decremento=[--]+
 Do=[entonces]+
+Hacer=[hacer]+
 While=[mientras]+
 CorcheteInicial=[\[]+
 CorcheteFinal=[\]]+
@@ -60,8 +61,8 @@ Class=[clase]+
 retornar=[devolver]+
 menos=[-]+
 VF = [verdadero,falso,1,0]+
-Incrementar = [incrementar]+
-Decrementar = [decrementar]+
+Incrementar =[incrementar]+
+Decrementar =[decrementar]+
 %{
     public String lexeme;
 %}
@@ -94,8 +95,6 @@ Decrementar = [decrementar]+
 /* Tipo de dato Cadena */
 {comilla}{Espacio}*(({L}|{D})*{Espacio}*)*{Espacio}*{comilla} {lexeme=yytext(); return CadenaDeTexto;}
 
-/* Palabra reservada Do */
-( hacer ) {lexeme=yytext(); return Do;}
 
 /* Palabra reservada While */
 ( mientras ) {lexeme=yytext(); return While;}
@@ -259,7 +258,19 @@ Decrementar = [decrementar]+
 ({Minusuculas}({L}|{D})*)({Incremento}|{Decremento}){Espacio}* {lexeme=yytext(); return post_incremento;}
 
 /* Sentencia FOR */
-{For}{Espacio}*{integer}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{Espacio}*{While}*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*({Incrementar}|{Decrementar}){Espacio}*{D}{Espacio}*{Do}{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC} {lexeme=yytext(); return Sentencia_for;}
+{For}{Espacio}*{integer}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*({Incrementar}|{Decrementar}){Espacio}*{D}*{Espacio}*{Hacer} 
+{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}  {lexeme=yytext(); return Sentencia_for;}
+
+/* Sentencia FOR2 */
+{For}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*({Incrementar}|{Decrementar}){Espacio}*{D}*{Espacio}*{Hacer} 
+{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}  {lexeme=yytext(); return Sentencia_forINCDEC;}
+
+/* Sentencia FOR3 */
+{For}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*({Incrementar}|{Decrementar}){Espacio}*{D}*{Espacio}*{Hacer} 
+{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}{Espacio}*{SaltoLinea}* 
+{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}   {lexeme=yytext(); return Sentencia_forinc;}
+/*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*{D}*{PC} */
+
 
 /* Error de analisis */
  . {return ERROR;}

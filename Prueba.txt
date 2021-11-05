@@ -41,3 +41,16 @@ devolver 1
 sino
 devolver valor
 
+desde entero i = 0 mientras i < 5 incrementar 2 hacer
+ escribir i ;
+
+entero i = 10
+desde i mientras i > 5 decrementar 2 hacer
+escribir i ;
+
+
+entero i
+desde i = 0 mientras i < 5 hacer
+ escribir i ;
+ i = i +2;
+// la salida ser ´a : 0 2 4
