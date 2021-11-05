@@ -186,8 +186,8 @@ public class analizadorlexico extends javax.swing.JFrame {
                 case String_a_Double:
                     resultado += "  <Funciones de conversión (String a Double)>\t" + lexer.lexeme + "\n";
                     break;
-                case BOOLEAN_a_STRING:
-                    resultado += "  <Funciones de conversión (Boolean a String)>\t" + lexer.lexeme + "\n";
+                case a_STRING:
+                    resultado += "  <Funciones de conversión>\t" + lexer.lexeme + "\n";
                     break;
                 case Sentencia_If:
                     resultado += "  <Sentencia IF>\t\t" + lexer.lexeme + "\n";

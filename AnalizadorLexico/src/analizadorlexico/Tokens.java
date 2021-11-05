@@ -54,7 +54,7 @@ public enum Tokens {
     String_a_Boleano,
     String_a_Double,
     Asignacion_boleana,
-    BOOLEAN_a_STRING,
+    a_STRING,
     A_radianes,
     Funcion_seno,
     Funcion_cos,

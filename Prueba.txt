@@ -1,0 +1,37 @@
+
+3545345
+-53453
+564.685
+-6456.654
+"HOLA MUNDO"
+5353 + 65456;
+534534 * 45345;
+5345 / 5;
+535 % 6456;
+ERROR 64564 - 646456;
+6456 + 53;
+var_1 * 53;
+53 / var45;
+var_1 % var_2;
+--d;
+d--;
+" Hola mundo "
+entero contador = 0
+ // esto es un comentario
+ /* esto tambien es un comentario
+ * pero de varias líneas
+ */
+cadenaAEntero(" Hola mundo ")
+cadenaAReal(" Hola mundo ")
+cadenaABoleano(" Hola mundo ")
+cadenaADouble(" Hola mundo ")
+ACadena(45)
+
+seno(45.67)
+coseno(54.67)
+tangente(67.89)
+logaritmo(2.7172)
+redondeo(2.5)
+potencia(2.5)
+aleatorio(54.5)
+raiz(54.5)

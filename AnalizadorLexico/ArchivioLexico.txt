@@ -1,15 +1,78 @@
 LINEA 1		SIMBOLO
- <Función Recursiva> 	int Funcion_recursiva ( int valor )
-if var2 == 1 
- return 1 
- else 
- return var2 + Funcion_recursiva ( valor - 1 )
 LINEA 2
+  <Número Entero>		3545345
 LINEA 3
- <Clase> 	public class Name {
- private String first;
- private String last;
- public int sum ( int a , int b ) 
-  { 
- System.out.println(" I am in line2 ");
- }
+  <Número Entero Negativo>		-53453
+LINEA 4
+  <Número Real>		564.685
+LINEA 5
+  <Número Real Negativo>		-6456.654
+LINEA 6
+  <Cadena de Texto>	"HOLA MUNDO"
+LINEA 7
+  <Operación  aritmética>		5353 + 65456;
+LINEA 8
+  <Operación  aritmética>		534534 * 45345;
+LINEA 9
+  <Operación  aritmética>		5345 / 5;
+LINEA 10
+  <Operación  aritmética>		535 % 6456;
+LINEA 11
+  <Identificador>		ERROR
+  <Número Entero Negativo>		 64564
+  <Número Entero Negativo>		 - 646456
+  <Punto y coma>	;
+LINEA 12
+  <Operación  aritmética>		6456 + 53;
+LINEA 13
+  <Operación  aritmética>		var_1 * 53;
+LINEA 14
+  <Operación  aritmética>		53 / var45;
+LINEA 15
+  <Operación  aritmética>		var_1 % var_2;
+LINEA 16
+  <Operador decremento>	--
+  <Variable>		d
+  <Punto y coma>	;
+LINEA 17
+  <Variable>		d
+  <Operador decremento>	--
+  <Punto y coma>	;
+LINEA 18
+  <Cadena de Texto>	" Hola mundo "
+LINEA 19
+  <Tipo de Dato>	entero
+  <Variable>		contador
+  <Operador igual>	=
+  <Número Entero Negativo>		 0
+LINEA 20
+LINEA 21
+LINEA 22
+LINEA 23
+LINEA 24
+  <Funciones de conversión (String a Entero)>	cadenaAEntero(" Hola mundo ")
+LINEA 25
+  <Funciones de conversión (String a Real)>	cadenaAReal(" Hola mundo ")
+LINEA 26
+  <Funciones de conversión (String a Boleano)>	cadenaABoleano(" Hola mundo ")
+LINEA 27
+  <Funciones de conversión (String a Double)>	cadenaADouble(" Hola mundo ")
+LINEA 28
+  <Funciones de conversión>	ACadena(45)
+LINEA 29
+LINEA 30
+  <Función Seno>		seno(45.67)
+LINEA 31
+  <Función Coseno>		coseno(54.67)
+LINEA 32
+  <Función Tangente>		tangente(67.89)
+LINEA 33
+  <Función Logaritmica>		logaritmo(2.7172)
+LINEA 34
+  <Función Redondeo>		redondeo(2.5)
+LINEA 35
+  <Función Potencia>		potencia(2.5)
+LINEA 36
+  <Función Número Aleatorio>		aleatorio(54.5)
+LINEA 37
+  <Función Raiz>		raiz(54.5)
