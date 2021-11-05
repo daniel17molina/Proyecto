@@ -1,18 +1,4 @@
 LINEA 1		SIMBOLO
-LINEA 2
-  <Variable>		desde
-  <Variable>		i
-  <Operador igual>	=
-  <Número Entero>		0
-  <Reservada while>	mientras
-  <Variable>		i
-  <Condicional>	<
-  <Número Entero>		5
-  <Variable>		hacer
-LINEA 3
-  <Reservada Salida>	escribir
-  <Variable>		i
-  <Punto y coma>	;
-LINEA 4
-  <Variable>		i
-  <Operador igual>	=
+ <  ciclo DESDE sin incremento> 	desde i = 0 mientras i < 5 hacer
+ escribir i ;
+ i = i +2;

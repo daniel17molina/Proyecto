@@ -266,10 +266,10 @@ Decrementar =[decrementar]+
 {Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}  {lexeme=yytext(); return Sentencia_forINCDEC;}
 
 /* Sentencia FOR3 */
-{For}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*({Incrementar}|{Decrementar}){Espacio}*{D}*{Espacio}*{Hacer} 
-{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}{Espacio}*{SaltoLinea}* 
-{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}   {lexeme=yytext(); return Sentencia_forinc;}
-/*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*{D}*{PC} */
+{For}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{D}*{Espacio}*{While}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Condicional}{Espacio}*(({Minusuculas}({L}|{D})*)|{D}*|{VF}){Espacio}*{Hacer} 
+{Espacio}*{SaltoLinea}*{Espacio}*{system}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{PC}{Espacio}*{SaltoLinea}*   
+{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}    
+{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*{D}*{PC} {lexeme=yytext(); return Sentencia_forinc;}
 
 
 /* Error de analisis */
