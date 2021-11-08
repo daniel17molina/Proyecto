@@ -1,1 +1,5 @@
 LINEA 1		SIMBOLO
+ <Salida de pantalla> 	entero 
+  <Reservada main>	Principal
+  <Parentesis de apertura>	(
+  <Parentesis de cierre>	)

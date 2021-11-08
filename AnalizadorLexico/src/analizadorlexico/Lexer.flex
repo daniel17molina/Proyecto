@@ -58,6 +58,13 @@ CorcheteInicial=[\[]+
 CorcheteFinal=[\]]+
 Coma=[,]+
 Class=[clase]+
+Propiedad=[propiedades,propiedad]+
+Metodos=[metodos]+
+Constructor=[constructor]+
+Destructor=[destructor]+
+Eliminar=[eliminar]+
+Principal=[Principal]+
+Instanciar=[instanciar]+
 retornar=[devolver]+
 menos=[-]+
 Real=[real]+
@@ -294,6 +301,36 @@ Decrementar =[decrementar]+
 /*función sumar original */
 {Espacio}*{Real}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{ParentesisInicial}({Espacio}*{Real}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Coma}*)*{ParentesisFinal}{Espacio}*{SaltoLinea}*
 {Espacio}*{retornar}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{UnionImpresion}{Espacio}*({Minusuculas}({L}|{D})*) {lexeme=yytext(); return Funcion_sumar2;}
+
+/* classes */
+{Espacio}*{Class}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{SaltoLinea}
+{Espacio}*{Propiedad}{Espacio}*(( privadas | publicas | protegidas)){Espacio}*{PC}{Espacio}*{SaltoLinea}
+({Espacio}*(( entero | caracter | flotante | cadena | boleano)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{SaltoLinea})*
+{Espacio}*{Metodos}{Espacio}*(( privadas | publicas | protegidas)){Espacio}*{PC}{Espacio}*{SaltoLinea}
+({Espacio}*{Constructor}{Espacio}*{ParentesisInicial}({Espacio}*(( entero | caracter | flotante | cadena | boleano)){Espacio}*({Minusuculas}({L}|{D})*){Espacio}*({Coma}|{Espacio}*)))*{ParentesisFinal}{Espacio}*{SaltoLinea}{Espacio}*
+({Espacio}*({L}|{D})*{Espacio}*{Asi}{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{SaltoLinea}*)*
+{Espacio}*{Destructor}{Espacio}*{ParentesisInicial}{ParentesisFinal}{Espacio}*{SaltoLinea}
+({Espacio}*{Eliminar}{Espacio}*({L}|{D})*{Espacio}*{SaltoLinea})*
+((( entero | caracter | flotante | cadena | boleano)){Espacio}*({L}|{D})*{Espacio}*{ParentesisInicial}{ParentesisFinal}{Espacio}*{SaltoLinea}{Espacio}*
+({Espacio}*{retornar}{Espacio}*({L}|{D})*{Espacio}*{operacionesbasicas}{Espacio}*({L}|{D})*)*)*
+((( entero | caracter | flotante | cadena | boleano)){Espacio}{Principal}{Espacio}*{ParentesisInicial}{ParentesisFinal}{Espacio}*{SaltoLinea}{Espacio}*
+(({L}|{D})*{Espacio}*({Minusuculas}({L}|{D})*){Espacio}*{Asi}{Espacio}*{Instanciar}{Espacio}*({LMayuscula}({L}|{D})*){Espacio}*{ParentesisInicial}{ParentesisFinal}{Espacio}*{SaltoLinea}{Espacio}*)*
+({system}{Espacio}*({Minusuculas}({L}|{D})*){PDecimal}({L}|{D})*{Espacio}*{SaltoLinea}{Espacio}*)*)
+
+/* Array con inicialización de valores */
+{Espacio}*(( entero | cadena | real | boleano)){Espacio}*
+({Minusuculas}({L}|{D})){Espacio}{CorcheteInicial}{Espacio}{D}
+{Espacio}{CorcheteFinal}{Espacio}{Asi}{Espacio}{LlaveInicial}
+{Espacio}({Espacio}({D}|{VF}|({comilla}{Espacio}(({L}|{D}){Espacio})
+{Espacio}{comilla})){Espacio}{Coma}){Espacio}{LlaveFinal}
+{Espacio} {lexeme=yytext(); return ArregloConValores;}
+
+/*Recursividad*/
+{Espacio}*(( entero | cadena | real | boleano)){Espacio}{ParentesisInicial}{Espacio}*(( entero | cadena | real | boleano)){Espacio}*({L}|{D})*{ParentesisFinal}{Espacio}*{SaltoLinea}
+{Espacio}*{If}{Espacio}*({L}|{D})*{Espacio}*{Condicional}{Espacio}*({L}|{D})*{Espacio}*{Do}{Espacio}*{SaltoLinea}
+{Espacio}*{retornar}{Espacio}*({L}|{D})*{Espacio}*{SaltoLinea}{Espacio}*
+{Espacio}*{ELSE}{Espacio}*{SaltoLinea}{Espacio}*
+{Espacio}*{retornar}{Espacio}*({L}|{D})*{Espacio}*{operacionesbasicas}{Espacio}*({L}|{D})*{Espacio}*{ParentesisInicial}{Espacio}*({L}|{D})*{Espacio}*{operacionesbasicas}{Espacio}*({L}|{D})*{Espacio}*{ParentesisFinal}{Espacio}*{SaltoLinea}{Espacio}*
 
 /* Error de analisis */
  . {return ERROR;}
