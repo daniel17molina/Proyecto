@@ -85,3 +85,5 @@ entero Sumar ( entero a , entero b )
 // función sumar para tipos reales
 real Sumar ( real a , real b )
  devolver a + b
+
+
